@@ -11,19 +11,16 @@ public class Customer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public int customerId;
-
     @NotNull
     private String lastName;
-
     @NotNull
     private String firstName;
-
     @NotNull
-    private String email;
-
-
+    private String adress;
     @NotNull
     private Date birthDate;
+    @NotNull
+    private double sales;
 
     @Override
     public String
@@ -32,7 +29,7 @@ public class Customer implements Serializable {
                 "customerId=" + customerId +
                 ", lastName='" + lastName + '\'' +
                 ", firstName='" + firstName + '\'' +
-                ", email='" + email + '\'' +
+                ", adress='" + adress + '\'' +
                 ", birthDate=" + birthDate +
                 '}';
     }
@@ -43,11 +40,28 @@ public class Customer implements Serializable {
         this.customerId = customerId;
     }
 
-    public Customer(String lastName, String firstName, Date birthDate, String email) {
+    public Customer(String lastName, String firstName, Date birthDate, String adress) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.birthDate = birthDate;
-        this.email = email;
+        this.adress = adress;
+        this.sales = 0;
+    }
+
+    public String getAdress() {
+        return adress;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public double getSales() {
+        return sales;
+    }
+
+    public void setSales(double sales) {
+        this.sales = sales;
     }
 
     public String getFirstName() {
@@ -63,8 +77,8 @@ public class Customer implements Serializable {
     }
 
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAdress(String adress) {
+        this.adress = adress;
     }
 
     public void setBirthDate(Date birthDate) {

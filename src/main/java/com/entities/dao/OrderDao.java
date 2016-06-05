@@ -2,19 +2,15 @@ package com.entities.dao;
 
 import javax.transaction.Transactional;
 
-import com.entities.Address;
-import com.entities.Customer;
-import org.hibernate.Query;
+import com.entities.Order;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
 @Transactional
-public class AddressDao {
+public class OrderDao {
     @Autowired
     private SessionFactory _sessionFactory;
 
@@ -22,8 +18,8 @@ public class AddressDao {
         return _sessionFactory.getCurrentSession();
     }
 
-    public void save(Address address) {
-        getSession().save(address);
+    public void save(Order order) {
+        getSession().save(order);
     }
 
 }

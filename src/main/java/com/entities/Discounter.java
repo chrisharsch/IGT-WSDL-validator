@@ -9,7 +9,7 @@ import java.io.Serializable;
  * Created by Severin on 28.05.2016.
  */
 @Entity
-public class Turnover implements Serializable{
+public class Discounter implements Serializable{
 
     @Id
     @OneToOne(cascade=CascadeType.ALL)
@@ -19,11 +19,11 @@ public class Turnover implements Serializable{
     @NotNull
     public double amount;
 
-    public Turnover(double amount, Customer customer) {
+    public Discounter(double amount, Customer customer) {
         this.amount = amount;
         this.customer = customer;
     }
-    public Turnover() {
+    public Discounter() {
 
     }
 

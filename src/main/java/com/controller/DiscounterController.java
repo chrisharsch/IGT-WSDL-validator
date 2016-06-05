@@ -1,9 +1,8 @@
 package com.controller;
 
 import com.entities.Customer;
-import com.entities.dao.ArticleDao;
 import com.entities.dao.CustomerDao;
-import com.entities.dao.TurnoverDao;
+import com.entities.dao.DiscounterDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,16 +14,13 @@ public class DiscounterController {
     @Autowired
     private CustomerDao _customerDao;
     @Autowired
-    private TurnoverDao _turnoverDao;
+    private DiscounterDao _discounterDao;
     @RequestMapping(value = "/calculate")
     @ResponseBody
     public String create(int customerId) {
         try {
             Customer customer=_customerDao.getCustomer(customerId);
-            boolean discount= _turnoverDao.checkDiscount(_customerDao.getPeerGroup(customerId),customer,true);
-            if(discount==false){
-                discount=_turnoverDao.checkDiscount(_customerDao.getAllUser(),customer,false);
-            }
+            boolean discount= _discounterDao.checkDiscount(customer);
             return ""+discount;
         } catch (Exception ex) {
             return ex.getMessage();
