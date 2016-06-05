@@ -1,25 +1,21 @@
 package com.controller;
 
-import com.entities.Order;
+import com.entities.Appointment;
 import com.entities.Customer;
-import com.entities.dao.OrderDao;
+import com.entities.dao.AppointmentDao;
 
 import com.entities.dao.CustomerDao;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
-
 @Controller
-@RequestMapping(value = "/order", method = RequestMethod.GET)
-public class OrderController {
+@RequestMapping(value = "/appointment", method = RequestMethod.GET)
+public class AppointmentController {
     @Autowired
-    private OrderDao _orderDao;
+    private AppointmentDao _appointmentDao;
     @Autowired
     private CustomerDao _customerDao;
 
@@ -28,12 +24,14 @@ public class OrderController {
     public String create(int customerId, double value) {
         try {
             Customer customer = _customerDao.getCustomer(customerId);
-            Order order = new Order(customer, value);
-            _orderDao.save(order);
+            customer.setSales(customer.getSales()+value);
+            Appointment appointment = new Appointment(customer, value);
+            _customerDao.save(customer);
+            _appointmentDao.save(appointment);
         } catch (Exception ex) {
             return ex.getMessage();
         }
-        return "Order succesfully saved!";
+        return "Appointment succesfully saved!";
     }
 }
 

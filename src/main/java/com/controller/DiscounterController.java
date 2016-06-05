@@ -15,13 +15,14 @@ public class DiscounterController {
     private CustomerDao _customerDao;
     @Autowired
     private DiscounterDao _discounterDao;
+
     @RequestMapping(value = "/calculate")
     @ResponseBody
     public String create(int customerId) {
         try {
-            Customer customer=_customerDao.getCustomer(customerId);
-            boolean discount= _discounterDao.checkDiscount(customer);
-            return ""+discount;
+            Customer customer = _customerDao.getCustomer(customerId);
+            boolean discount = _discounterDao.checkDiscount(customer);
+            return "" + discount;
         } catch (Exception ex) {
             return ex.getMessage();
         }

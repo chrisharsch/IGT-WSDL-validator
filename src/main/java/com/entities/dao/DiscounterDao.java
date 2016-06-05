@@ -36,7 +36,6 @@ public class DiscounterDao {
 
     public boolean checkDiscount(Customer customer) {
         Session session = getSession();
-        session.beginTransaction();
         Criteria crit = session.createCriteria(Customer.class);
         List costumers = crit.list();
         double allSales = 0;
@@ -46,6 +45,7 @@ public class DiscounterDao {
         if (customer.getSales() > (allSales * 0.10)) {
             return true;
         } else {
+            System.out.print(customer.getSales());
 
             double allSalesForPeer = 0;
             for (Object costumersToWork : costumers) {

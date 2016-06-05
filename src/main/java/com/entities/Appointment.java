@@ -6,28 +6,34 @@ import java.io.Serializable;
 
 
 @Entity
-public class Order implements Serializable {
+public class Appointment implements Serializable {
 
     @Id
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customerId")
+    private int appointmentId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customerId", nullable = false)
     private Customer customer;
 
     @NotNull
     private double value;
 
-
-
-
-    public Order(Customer customer, double value) {
+    public Appointment(Customer customer, double value) {
         this.value = value;
         this.customer = customer;
     }
 
-    public Order() {
+    public Appointment() {
     }
     public Customer getCustomer() {
         return customer;
+    }
+
+    public int getAppointmentId() {
+        return appointmentId;
+    }
+
+    public void setAppointmentId(int appointmentId) {
+        this.appointmentId = appointmentId;
     }
 
     public void setCustomer(Customer customer) {

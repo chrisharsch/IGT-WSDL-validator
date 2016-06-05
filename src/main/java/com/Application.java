@@ -11,6 +11,6 @@ public class Application {
     }
 }
 //http://localhost:8080/customer/add?lastName=Albers&firstName=Hans&birthDate=1990-01-01&adress=hallo
-//http://localhost:8080/order/add?customerId=1&value=123.2
-
+//http://localhost:8080/appointment/add?customerId=1&value=123.2
+//http://localhost:8080/discount/calculate?customerId=1
 //http://localhost:8080/validateWSDL?wsdl_url=https://svn.apache.org/repos/asf/airavata/sandbox/xbaya-web/test/Calculator.wsdl

@@ -4,6 +4,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Customer implements Serializable {
@@ -21,6 +23,8 @@ public class Customer implements Serializable {
     private Date birthDate;
     @NotNull
     private double sales;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "appointment")
+    private Set<Appointment> appointments;
 
     @Override
     public String
@@ -97,5 +101,11 @@ public class Customer implements Serializable {
         this.firstName = firstName;
     }
 
+    public Set<Appointment> getAppointments() {
+        return appointments;
+    }
 
+    public void setAppointments(Set<Appointment> appointments) {
+        this.appointments = appointments;
+    }
 }
