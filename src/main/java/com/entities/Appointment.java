@@ -9,9 +9,10 @@ import java.io.Serializable;
 public class Appointment implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int appointmentId;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customerId", nullable = false)
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name = "customerId")
     private Customer customer;
 
     @NotNull

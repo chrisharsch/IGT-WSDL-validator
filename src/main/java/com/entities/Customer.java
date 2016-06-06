@@ -23,8 +23,8 @@ public class Customer implements Serializable {
     private Date birthDate;
     @NotNull
     private double sales;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "appointment")
-    private Set<Appointment> appointments;
+    @OneToMany(fetch=FetchType.LAZY,mappedBy = "appointmentId")
+    private Set<Appointment> appointment;
 
     @Override
     public String
@@ -38,7 +38,8 @@ public class Customer implements Serializable {
                 '}';
     }
 
-    public Customer() { }
+    public Customer() {
+    }
 
     public Customer(int customerId) {
         this.customerId = customerId;
@@ -101,11 +102,11 @@ public class Customer implements Serializable {
         this.firstName = firstName;
     }
 
-    public Set<Appointment> getAppointments() {
-        return appointments;
+    public Set<Appointment> getAppointment() {
+        return appointment;
     }
 
-    public void setAppointments(Set<Appointment> appointments) {
-        this.appointments = appointments;
+    public void setAppointment(Set<Appointment> appointment) {
+        this.appointment = appointment;
     }
 }

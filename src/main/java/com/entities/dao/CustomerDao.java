@@ -26,7 +26,9 @@ public class CustomerDao {
     public void save(Customer customer) {
         getSession().save(customer);
     }
-
+    public void update(Customer customer) {
+        getSession().update(customer);
+    }
     @SuppressWarnings("unchecked")
     public Customer getCustomer(int id){
         String hql = "from Customer where customerId like :id";

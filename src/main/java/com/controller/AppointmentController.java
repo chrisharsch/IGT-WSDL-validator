@@ -5,6 +5,7 @@ import com.entities.Customer;
 import com.entities.dao.AppointmentDao;
 
 import com.entities.dao.CustomerDao;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +27,7 @@ public class AppointmentController {
             Customer customer = _customerDao.getCustomer(customerId);
             customer.setSales(customer.getSales()+value);
             Appointment appointment = new Appointment(customer, value);
-            _customerDao.save(customer);
+            _customerDao.update(customer);
             _appointmentDao.save(appointment);
         } catch (Exception ex) {
             return ex.getMessage();
